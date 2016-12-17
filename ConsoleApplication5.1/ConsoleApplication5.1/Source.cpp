@@ -10,13 +10,17 @@ struct ListElement
 
 void add(ListElement *&head, int value)
 {
-	if ((head == nullptr)||(head->value > value))
+	if ((head == nullptr) || (head->value > value))
 	{
 		auto newElement = new ListElement{ value, head };
 		head = newElement;
 	}
-	else add(head->next, value);
-} 
+	else
+	{
+		add(head->next, value);
+	}
+}
+
 void print(ListElement *head)
 {
 	while (head != nullptr)
@@ -65,7 +69,7 @@ bool test1()
 	add(head, 4);
 	remove(head, 4);
 	return head->value == 3 && head->next->value == 7;
- }
+}
 
 bool test2()
 {
@@ -90,34 +94,46 @@ int main()
 	}
 	ListElement *head = nullptr;
 	int numberOfOperation = -1;
+	cout << "Type 1 to add the element" << endl << "Type 2 to delete" << endl;
+	cout << "Type 3 to print list" << endl << "Type 0 to finish" << endl;
 	while (numberOfOperation != 0)
 	{
 		cout << "Type the number of operation" << endl;
 		cin >> numberOfOperation;
-		if (numberOfOperation == 1)
+		switch (numberOfOperation)
+		{
+		case 1:
 		{
 			cout << "Type the element" << endl;
 			int a;
 			cin >> a;
 			add(head, a);
+			break;
 		}
-		if (numberOfOperation == 2)
+		case 2:
 		{
 			cout << "Type the element" << endl;
 			int a;
 			cin >> a;
 			remove(head, a);
+			break;
 		}
-		if (numberOfOperation == 3)
+		case 3:
 		{
 			print(head);
 			cout << endl;
+			break;
+		}
+		case 0:
+		{
+			deleteList(head);
+			delete head;
+			return 0;
+		}
+		default:
+		{
+			cout << "There is not such operation";
+		}
 		}
 	}
-	if (numberOfOperation == 0)
-	{
-		deleteList(head);
-		delete head;
-	}
-	return 0;
 }
