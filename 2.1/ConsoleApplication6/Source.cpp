@@ -2,18 +2,15 @@
 
 using namespace std;
 
-long long fibonacciRec(int n, long long f1, long long f2)
+long long fibonacciRec(int n)
 {
 	if (n - 2 > 0)
 	{
-		int a = f2;
-		f2 = f1 + f2;
-		f1 = a;
-		fibonacciRec(n - 1, f1, f2);
+		return fibonacciRec(n - 1) + fibonacciRec(n - 2);
 	}
 	else
 	{
-		return f2;
+		return 1;
 	}
 }
 
@@ -35,7 +32,7 @@ int main()
 	long long f2 = 1;
 	cout << "Type the number of Fibonacci" << " ";
 	cin >> numberofibonacci;
-	cout << fibonacciRec(numberofibonacci, f1, f2);
+	cout << fibonacciRec(numberofibonacci);
 	cout << endl << fibonacciInter(numberofibonacci, f1, f2);
 	return 0;
 }
