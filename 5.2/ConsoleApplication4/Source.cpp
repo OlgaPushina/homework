@@ -34,10 +34,10 @@ void createList(ListElement *&head, ListElement *&head2, int number)
 
 void remove(ListElement *&head2)
 {
-		ListElement *oldhead = head2->next;
-		head2->next = head2->next->next;
-		head2 = head2->next;
-		delete oldhead;
+	ListElement *oldhead = head2->next;
+	head2->next = head2->next->next;
+	head2 = head2->next;
+	delete oldhead;
 }
 
 int findTheNumber(int position, ListElement *&head2)
@@ -103,6 +103,7 @@ int main()
 	cout << "Type the position" << endl;
 	cin >> position;
 	createList(head, head2, number);
+	delete head2;
 	cout << findTheNumber(position, head2);
 	return 0;
 }
