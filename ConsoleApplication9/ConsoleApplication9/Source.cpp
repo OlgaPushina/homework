@@ -14,10 +14,10 @@ int main()
 	int k = 0;
 	for (int i = 0; i < s.length(); ++i)
 	{
-		if (s[i] == s[0])
+		if (s[i] == s1[0])
 		{
 			int j = 1;
-			while ((s[i + j] == s[j]) && (j < s1.length()))
+			while ((s[i + j] == s1[j]) && (j < s1.length()))
 			{
 				++j;
 			}
